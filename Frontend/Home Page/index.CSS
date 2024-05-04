@@ -8,11 +8,13 @@
     --transition-speed: 600ms;
   }
   
-  body {
+  .index {
     color: black;
     background-color: #141418;
     margin: 0;
     padding: 0;
+    background-image: url("../Image/img.jpg");
+    background-size: cover;
   }
   
   body::-webkit-scrollbar {
@@ -223,9 +225,4 @@
   
   .navbar:hover .logo-hide {
     opacity: 0; 
-  }
-  section{
-    min-height: 100%;
-    background-image: url("../Image/img.jpg");
-    background-size: cover;
   }
