@@ -27,10 +27,13 @@ def listMeals(request):
     return JsonResponse(data)
 
 def cardInfo(request):
-    Name = request.headers["Name"]
-    meal = Meal.objects.filter(name=Name)[0]
-    cost = meal.cost
-    ingredientList = meal.ingredientList
-    data = {"cost":cost, "list":ingredientList}
+    Name = request.GET.get("Name", "")
+    meal = Meal.objects.filter(name=Name).first()
+    if meal:
+        cost = meal.cost
+        ingredientList = meal.ingredientList
+        data = {"cost": cost, "list": ingredientList}
+    else:
+        data = {"error": "Meal not found"}
     
     return JsonResponse(data)
