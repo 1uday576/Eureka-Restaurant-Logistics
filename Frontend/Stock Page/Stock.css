@@ -59,16 +59,46 @@ body {
     grid-template-columns: repeat(2,1fr);
 }
 
-.cartTab .btn button{
+.cartTab .btn .CHECK{
     background-color: #E8BC0E;
     border: none;
     font-weight: 500;
+    cursor: pointer;
+    width: 400px;
+}
+
+
+.cartTab .listChart .item img{
+    width: 100%; 
+}
+.cartTab .listChart .item{
+    display: grid;
+    grid-template-columns: 100px 50px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;    
+}
+.listChart .quantity span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    color: #555;
+    border-radius: 50%;
     cursor: pointer;
 }
 
-.cartTab .btn .close{
-    background-color: #E8BC0E;
-    border: none;
-    font-weight: 500;
-    cursor: pointer;
+.listChart .quantity span:nth-child(2){
+    background-color: transparent;
+    color: #eee;
+}
+.listChart .item:nth-child(even){
+    background-color: #eee1;
+}
+.listChart{
+    overflow: auto;
+}
+.listChart::-webkit-scrollbar{
+    width: 0;
+    
 }
