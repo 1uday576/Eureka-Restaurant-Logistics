@@ -28,14 +28,17 @@ def listMeals(request):
 
     return JsonResponse(data)
 
-def listIngredient(request):
+def listStock(request):
     ingredient = Ingredient.objects.all()
 
     names = []
+    amount = []
     for i in range(0, len(ingredient)):
         names.append(ingredient[i].name)
+        amount.append(ingredient[i].stock)
 
-    data = {'names':names}
+    data = {'names':names, 'amount': amount}
+    return JsonResponse(data)
 
 def cardInfo(request):
     Name = request.GET.get("Name", "")

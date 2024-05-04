@@ -6,5 +6,6 @@ urlpatterns = [
     #path to the stock named 'stock'
     path("stock", views.stock, name="stock"),
     path("mealsNames", views.listMeals, name="mealsNames"),
+    path("ingredientStock", views.listStock, name="ingredientStock"),
     path("cardInfo", views.cardInfo, name="cardInfo")
 ]
