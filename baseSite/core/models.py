@@ -40,7 +40,8 @@ class Meal(models.Model):
         return self.name
 
 class TransactionMeal(models.Model):
-    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    # meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
+    meal = models.CharField(max_length=200)
     date = models.DateTimeField("date bought")
     numberSold = models.IntegerField()
 
@@ -48,8 +49,9 @@ class TransactionMeal(models.Model):
         return self.meal
 
 class TransactionIngredient(models.Model):
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
-    date = models.DateTimeField("date bought")
+    # ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    ingredient = models.CharField(max_length=200)
+    date = models.DateField("date bought")
     numberSold = models.IntegerField()
 
     def __str__(self):
