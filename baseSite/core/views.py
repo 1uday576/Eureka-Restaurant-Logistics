@@ -40,6 +40,18 @@ def listStock(request):
     data = {'names':names, 'amount': amount}
     return JsonResponse(data)
 
+def listOrder(request):
+    listModel = TransactionMeal.objects.all()
+
+    names = []
+    amount = []
+    for i in range(0, len(listModel)):
+        names.append(listModel[i].meal)
+        amount.append(listModel[i].numberSold)
+
+    data = {'names':names, 'amount': amount}
+    return JsonResponse(data)
+
 def cardInfo(request):
     Name = request.GET.get("Name", "")
     meal = Meal.objects.filter(name=Name).first()
