@@ -224,8 +224,8 @@
   .navbar:hover .logo-hide {
     opacity: 0; 
   }
-  section{
-    min-height: 100%;
-    background-image: url("../Image/img.jpg");
-    background-size: cover;
-  }
+section{
+  min-height: 100%;
+  background-image: url("../Image/img.jpg");
+  background-size: cover;
+}
