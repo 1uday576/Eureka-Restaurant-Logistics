@@ -38,22 +38,13 @@ def listIngredient(request):
     data = {'names':names}
 
 def cardInfo(request):
-    Name = request.headers["Name"]
-    meal = Meal.objects.filter(name=Name)[0]
-    cost = meal.cost
-    ingredientList = meal.ingredientList
-    data = {"cost":cost, "list":ingredientList}
+    Name = request.GET.get("Name", "")
+    meal = Meal.objects.filter(name=Name).first()
+    if meal:
+        cost = meal.cost
+        ingredientList = meal.ingredientList
+        data = {"cost": cost, "list": ingredientList}
+    else:
+        data = {"error": "Meal not found"}
     
     return JsonResponse(data)
-
-def postMeal(request):
-    mealList = json.load(request.headers["List"])["meals"]
-
-    for key, value in mealList.items():
-        t = TransactionMeal(meal = key, date = datetime.date.today(), numberSold=value)
-        t.save()
-
-        inList = meal.ingredientList
-        for ing, amount in inList.items():
-            tI = TransactionIngredient(ingredient = ing, date = datetime.date.today(), numberSold =amount)
-            tI.save()
