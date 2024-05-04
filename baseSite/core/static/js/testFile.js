@@ -14,6 +14,10 @@ async function getMealNames() {
       let name = card.closest(".card").dataset.name;
       // Call getCardInfo with the name
       getCardInfo(name);
+      // Add click event listener to add item to cart
+      card.closest(".card").addEventListener("click", () => {
+        addItemToCart(name);
+      });
     });
   } catch (error) {
     console.error("Error fetching meal names:", error);
@@ -69,5 +73,32 @@ async function getCardInfo(name) {
     }
   } catch (error) {
     console.error("Error fetching card info:", error);
+  }
+}
+
+function addItemToCart(name) {
+  // Get the card element with the matching name
+  let card = document.querySelector(`[data-name="${name}"]`);
+  if (card) {
+    // Get the name and price of the item
+    let itemName = card.querySelector("h3").textContent;
+    let itemPrice = card
+      .querySelector(".Burger-Card p")
+      .textContent.split("\n")[0]
+      .replace("Cost: $", "");
+
+    // Create a new item element
+    let newItem = document.createElement("div");
+    newItem.classList.add("item");
+    newItem.innerHTML = `
+        <div class="name">${itemName}</div>
+        <div class="totalPrice">$${itemPrice}</div>
+      `;
+
+    // Add the new item to the cart
+    let cartTab = document.querySelector(".cartTab .listChart");
+    cartTab.appendChild(newItem);
+  } else {
+    console.error("Card not found:", name);
   }
 }
