@@ -12,6 +12,9 @@ def homePage(request):
 def stock(request):
     return render(request, 'Stock.html')
 
+def order(request):
+    return render(request, 'order.html')
+
 def listMeals(request):
     meals = Meal.objects.all()
 
