@@ -102,3 +102,25 @@ function addItemToCart(name) {
     console.error("Card not found:", name);
   }
 }
+function listStock() {
+  return fetch("/list_stock") // Assuming the URL for the endpoint is '/list_stock'
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Extract names and amounts from the JSON response
+      const names = data.names;
+      const amounts = data.amount;
+
+      // Return an object with names and amounts
+      return { names, amounts };
+    })
+    .catch((error) => {
+      console.error("Error fetching stock data:", error);
+      // Return an empty object or handle the error as needed
+      return {};
+    });
+}
